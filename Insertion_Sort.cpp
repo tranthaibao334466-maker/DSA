@@ -21,15 +21,21 @@ int main()
 {
     int n; 
     int *A = new int[100];
+    bool check = true; 
+    do {
+        if(!check) {cout << "Error!!!" << endl;}
         cout << "Please enter the size of array: ";
         cin >> n;
-        for(int i=0;i<n;i++)
-        {
-            cout << "Nhap phan tu thu " << i << " : ";
-            cin >> A[i] ; 
-        }
-    // About using Git -> you have to save your file for GIT understanding that the files's changed 
+        check = false;
+    }while (n <0 || n > 100); // Really take care of your logical operation 
+
+    for(int i=0;i<n;i++)
+    {
+        cout << "Nhap phan tu thu " << i+1 << " : ";
+        cin >> A[i] ; 
+    }
     delete[] A; // Xoa mot mang A duoc cap phat dong 
+    // About using Git -> you have to save your file for GIT understanding that the files's changed 
     // In main function, progarm understand that A implies an array => sizeof(A) oke
     // In function outside, program understand that A is a pointer => sizeof(A) is not oke 
     Insertion_Sort(A,n); 
@@ -37,5 +43,5 @@ int main()
     {
         printf("%d ", A[i]);
     }    
-
+    //delete[] A; // Xoa mot mang A duoc cap phat dong 
 }
