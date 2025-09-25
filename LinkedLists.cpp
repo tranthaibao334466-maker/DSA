@@ -2,11 +2,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-
-void Sort_GPA(struct Student A[], int n )
-{
-    
-}
+// Remove unnecessary function 
 struct Student{
     int MSV;
     float GPA;
@@ -24,13 +20,13 @@ struct node *Create_Lists(struct node *Start, int n )
     float gpa;
     int msv;
     //struct node *new_node = (struct node *)malloc(sizeof(struct node)); -> Cap phat dung malloc ( C )
-    struct node *new_node = new struct node; 
+    ////struct node *new_node = new struct node; 
     // new data_type -> Cap phat trong C++ mot vung nho dong chua duoc 1 bien kieu data_type
     // new data_type(100) -> Cap phat vung nho cho 100 bien kieu data_type
     // new data_type(100) -> Cap phat va gan phan tu = 100 vao vung nho ay 
     // struct node *new_node = new struct node ({name},{msv},{gpa}); ??? Maybe can't run 
     struct node *ptr;
-    cout << "Nhap ten sinh vien thu 1 : " ;
+    /*cout << "Nhap ten sinh vien thu 1 : " ;
     getline(cin,name);
     //cin.ignore();
     // cin.ignore() la do loai bo ki tu khoi buffer truoc khi dung getline
@@ -42,8 +38,21 @@ struct node *Create_Lists(struct node *Start, int n )
     (new_node->Information).NAME = name;
     (new_node->Information).MSV = msv; 
     (new_node->Information).GPA = gpa;
-    for(int i=1;i<=n-1;i++)
+    */
+    for(int i=1;i<=n;i++)
     {
+        struct node *new_node = new struct node; 
+        cout << "Nhap ten sinh vien thu " << i << " : "; 
+        getline(cin,name);
+        cout << "Nhap ma sinh vien thu " << i << " : "; 
+        cin >> msv;
+        cout << "Nhap gpa sinh vien thu " << i << " : "; 
+        cin >> gpa;
+        cin.ignore();
+        (new_node->Information).NAME = name;
+        (new_node->Information).MSV = msv; 
+        (new_node->Information).GPA = gpa;
+
         if (Start == NULL)
         {
             Start = new_node;
@@ -58,17 +67,6 @@ struct node *Create_Lists(struct node *Start, int n )
             ptr->Next = new_node;
             new_node->Next = NULL;
         }
-        new_node = new struct node; 
-        printf("Nhap ten sinh vien thu %d : ", i+1);
-        getline(cin,name);
-        printf("Nhap msv sinh vien thu %d : ", i+1);
-        cin >> msv;
-        printf("Nhap gpa sinh vien thu %d : ", i+1);
-        cin >> gpa;
-        cin.ignore();
-        (new_node->Information).NAME = name;
-        (new_node->Information).MSV = msv; 
-        (new_node->Information).GPA = gpa;
     }
     return Start;
 }
@@ -78,6 +76,7 @@ void display_list(struct node *Start)
     struct node *ptr = Start;
     int n = 1;
     //while(ptr->Next != NULL)
+    cout << endl << "Thong tin sinh vien: " << endl; // Added new comment to make program output more readable 
     while(ptr != NULL)
     {
         cout << "Ten sinh vien thu " << n << " la: " << (ptr->Information).NAME << endl;
@@ -90,7 +89,7 @@ void display_list(struct node *Start)
 int main()
 {
     int n;
-    printf("Please enter the number of students: ");
+    cout << "Please enter the number of students: "; 
     cin >> n;
     cin.ignore(); // Loi o day nen khong the nhap duoc 
     Start = Create_Lists(Start,n); // O day ham Create tra ve Start nhung minh lai khong truyen cho Display nen no van la NULL
