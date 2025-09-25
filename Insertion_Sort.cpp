@@ -3,7 +3,7 @@
 
 #include <iostream> 
 using namespace std;
-void Insertion_Sort(int A[], int n ) // How to pass the Array to the Function and Changing it 
+void Insertion_Sort(int *A, int n ) // How to pass the Array to the Function and Changing it 
 {
     for(int i=1; i<n ; i++)
     {
@@ -34,14 +34,16 @@ int main()
         cout << "Nhap phan tu thu " << i+1 << " : ";
         cin >> A[i] ; 
     }
-    delete[] A; // Xoa mot mang A duoc cap phat dong 
+    cout << A[0] << A[1] << A[2] ; 
     // About using Git -> you have to save your file for GIT understanding that the files's changed 
     // In main function, progarm understand that A implies an array => sizeof(A) oke
     // In function outside, program understand that A is a pointer => sizeof(A) is not oke 
     Insertion_Sort(A,n); 
     for(int i=0; i<n; i++)
     {
-        printf("%d ", A[i]);
+        cout << A[i] << ' ' ; 
     }    
-    //delete[] A; // Xoa mot mang A duoc cap phat dong 
+    delete[] A; 
+    // Xoa mot mang A duoc cap phat dong 
+    // Using delete will remove everything in your array, so just using it in the end of program
 }
