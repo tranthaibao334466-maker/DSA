@@ -26,19 +26,6 @@ struct node *Create_Lists(struct node *Start, int n )
     // new data_type(100) -> Cap phat va gan phan tu = 100 vao vung nho ay 
     // struct node *new_node = new struct node ({name},{msv},{gpa}); ??? Maybe can't run 
     struct node *ptr;
-    /*cout << "Nhap ten sinh vien thu 1 : " ;
-    getline(cin,name);
-    //cin.ignore();
-    // cin.ignore() la do loai bo ki tu khoi buffer truoc khi dung getline
-    cout << "Nhap msv sinh vien thu 1 : ";
-    cin >> msv;
-    cout << "Nhap gpa sinh vien thu 1 : ";
-    cin >> gpa;
-    cin.ignore();
-    (new_node->Information).NAME = name;
-    (new_node->Information).MSV = msv; 
-    (new_node->Information).GPA = gpa;
-    */
     for(int i=1;i<=n;i++)
     {
         struct node *new_node = new struct node; 
