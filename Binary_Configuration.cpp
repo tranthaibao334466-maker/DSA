@@ -6,6 +6,7 @@ using namespace std;
 
 int n;
 int X[100]; 
+// Khai bao mang trong ham se khien cac gia tri luu tru truoc do bi ghi de khi goi ham con 
  
 void Try(int i)
 {
