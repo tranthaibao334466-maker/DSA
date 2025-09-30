@@ -3,7 +3,10 @@
 
 #include <stdio.h>
 
-const int MAX = 50;
+// const int MAX = 50;
+// Avoid using const in C program
+
+#define MAX 50
 struct Stack{
     int infor[MAX];
     int size;
@@ -63,6 +66,7 @@ int main()
     int val;
     int check = 1;
     struct Stack S;
+    Init_Stack(&S);
     do{
         if(!check) {printf("Error! Please enter the positive number: ");}
         else{
