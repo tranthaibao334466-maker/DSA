@@ -1,3 +1,6 @@
+// Using C struct to create stack data structure
+// ??? How to use template in C++ to apply stucture for more data types 
+
 #include <stdio.h>
 
 const int MAX = 50;
@@ -45,15 +48,34 @@ void display_Stack (struct Stack S)
         printf("Phan tu thu %d la: %d\n", i+1 , S.infor[i]);
     }
 }
+
+void ToBinary(int val, struct Stack *S)
+{
+    while(val > 0)
+    {
+        Push(S, (val%2));
+        val/=2;
+    }
+}
+// Transfer from decimal to binary
 int main()
 {
+    int val;
+    int check = 1;
     struct Stack S;
-    Init_Stack(&S);
-    printf("%d\n", S.size);
-    Push(&S, 3);
-    Push(&S,4);
-    Push(&S,5);
-    Pop(&S);
-    display_Stack(S);
-
+    do{
+        if(!check) {printf("Error! Please enter the positive number: ");}
+        else{
+            printf("Enter the value: ");
+        }
+        scanf("%d", &val);
+        check = 0 ;
+    }while(val < 0);
+    ToBinary(val , &S);
+    int n = S.size;
+    printf("The binary value of %d is: \n", val);
+    for(int i=0;i<n;i++)
+    {
+        printf("%d", Top(&S));
+    }
 }
