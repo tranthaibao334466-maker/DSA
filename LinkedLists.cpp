@@ -58,6 +58,10 @@ struct node *Create_Lists(struct node *Start, int n )
             {
                 ptr=ptr->Next;
             }
+            // Using ptr to iterate the list 
+            // because we just know the START 
+            // so we have to a NULL pointer to sign for the last element 
+            // then using ptr to iterate to find it and add the new element at the end 
             ptr->Next = new_node;
             new_node->Next = NULL;
         }
