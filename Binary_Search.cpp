@@ -19,7 +19,7 @@ int Binary_Search(int *A, int L, int R, int val)
             }
         }
     }
-    return __INT_MAX__; 
+    throw "Can't find ";
     // If your pos = 0, it'll be wrong
 }
 
@@ -43,11 +43,13 @@ int main()
     } 
     cout << "Enter the enquiring number: ";
     cin >> val; 
-    int pos = Binary_Search(A,0,n-1,val); 
-    // Using pos to prevent call function two time ( which is time-wasting)
-    if(pos == __INT_MAX__) {cout << "Can't find the value in the array" ;}
-    else{
+    try{
+        int pos = Binary_Search(A,0,n-1,val); 
+        // Using pos to prevent call function two time ( which is time-wasting)
         cout << "The position of enquiring number is: " << pos+1 << endl;
     }
-
+    catch(const char* allert)
+    {
+        cout << allert << val << " in the array"; 
+    }
 }
