@@ -5,59 +5,43 @@
 
 using namespace std;
 
-int n; 
-int count = 0 ;
-pair <int,int> P[100];
-int  A[4][4];
-void Queen_Sort(int i , int j)
+int A[100];
+// A[i] with i store the number of row and A[i] store the correspond collumn 
+int n;
+
+bool Check(int row,int col)
 {
-    if(count == n) 
+    // Iterate to ensure that the potential queen can't be eat by "all" the confirmed queen before
+    for(int i=1;i<row;i++)
+    // Remember to use quotation < ( i < row ) instead of <= 
     {
-        for(int index = 0; index < n; index ++)
-        {
-            cout << "The " << i+1 << " position is: " << '(' << P[index].first << ',' << P[index].second << ')' << endl;
-        }
+        if( col == A[i] || abs(col-A[i]) == abs(row-i) ) return false;
     }
-    else
+    return true;
+}
+void Queen(int i)
+{ 
+    for(int j=1;j<=n;j++)
     {
-        for(int a=0;a<n;a++)
+        if(Check(i,j))
         {
-            if(a==i)
+            A[i] = j;
+            if(i==n) 
             {
-                for(int b=0;b<n;b++)
+                for(int index =1 ; index <=n ; index++)
                 {
-                    A[a][b] = 0; 
+                    cout << '(' << index << ',' << A[index] << ')' << " ";
                 }
+                // If there is a available solution the A[] array would be filled from the first index to the n one 
+                cout << endl;
             }
-            else{
-                for(int b=0;b<n;b++)
-                {
-                    if (A[a][b]==0) continue;
-                    if(b==j || abs(i-j) == abs(a-b)) A[a][b] = 0; 
-                    else{
-                        P[count].first = a;
-                        P[count++].second = b;
-                        Queen_Sort(a,b);
-                    }
-                }
-            }
+            else Queen(i+1); 
         }
     }
 }
+
 int main()
 {
-    cout << "Enter the n number: ";
-    cin >> n;
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            A[i][j] = 1;
-        }
-        for(int j=0;j<n;j++)
-        {
-            Queen_Sort(i,j);
-        }
-    }
-    if(count<n) cout << "Sorting is unavailable !" ; 
+    n=4;
+    Queen(1);
 }
